@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://render.com/schema/render.yaml.json
+services:
+  - type: web
+    name: regexlab
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeployTrigger: commit
+    healthCheckPath: /health.php
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: REGEXLAB_TRUST_PROXY
+        value: "1"
